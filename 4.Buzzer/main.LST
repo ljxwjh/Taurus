@@ -1,0 +1,75 @@
+C51 COMPILER V9.01   MAIN                                                                  05/02/2022 10:34:44 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: D:\51SCM\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg52.h"
+   2          
+   3          sbit BEEP = P2^5;
+   4          
+   5          void delay_10us(unsigned int ten_us)
+   6          {
+   7   1              while(ten_us--);
+   8   1      }
+   9          
+  10          void main()
+  11          {
+  12   1              unsigned int a = 600;
+  13   1              unsigned int b = 600;
+  14   1              unsigned int c = 600;
+  15   1              
+  16   1              while(1)
+  17   1              {
+  18   2                      while(a--)
+  19   2                      {
+  20   3                              BEEP = !BEEP;
+  21   3                              delay_10us(300);//频率等于周期时间的倒数，这里是0.5kHz
+  22   3                      }
+  23   2      
+  24   2                      a = 0;
+  25   2                      BEEP = 0;
+  26   2      
+  27   2                      while(b--)
+  28   2                      {
+  29   3                              BEEP = 0;
+  30   3                              delay_10us(150);//频率等于周期时间的倒数，这里是0.5kHz
+  31   3                              BEEP = 1;
+  32   3                              delay_10us(250);
+  33   3                              
+  34   3                      }
+  35   2      
+  36   2                      b = 0;
+  37   2                      BEEP = 0;
+  38   2      
+  39   2                      while(c--)
+  40   2                      {
+  41   3                              BEEP = 0;
+  42   3                              delay_10us(200);//频率等于周期时间的倒数，这里是0.5kHz
+  43   3                              BEEP = 1;
+  44   3                              delay_10us(300);
+  45   3                              
+  46   3                      }
+  47   2                      c = 0;
+  48   2                      BEEP = 0;
+  49   2              }
+  50   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    132    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.01   MAIN                                                                  05/02/2022 10:34:44 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
